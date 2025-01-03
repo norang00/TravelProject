@@ -6,40 +6,55 @@
 //
 
 import UIKit
+import Kingfisher
 
 class MagazineTableViewController: UITableViewController {
+
+    let magazineList = MagazineInfo().magazine
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        navigationItem.title = "SeSAC TRAVEL"
     }
 
     // MARK: - Table view data source
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
-
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        return magazineList.count
     }
 
-    /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "magazineCell", for: indexPath) as! MagazineTableViewCell
+        
+        let item = magazineList[indexPath.row]
+        let imageURL = URL(string: item.photo_image)
 
-        // Configure the cell...
+        cell.magazineImageView.kf.setImage(with: imageURL)
+        cell.magazineImageView.contentMode = .scaleAspectFill
+        cell.magazineImageView.layer.cornerRadius = 16
 
+        cell.magazineTitleLabel.text = item.title
+        cell.magazineTitleLabel.textColor = .black
+        cell.magazineTitleLabel.textAlignment = .left
+        cell.magazineTitleLabel.font = .systemFont(ofSize: 18, weight: .black)
+        cell.magazineTitleLabel.numberOfLines = 2
+        
+        cell.magazineSubtitleLabel.text = item.subtitle
+        cell.magazineSubtitleLabel.textColor = .lightGray
+        cell.magazineSubtitleLabel.textAlignment = .left
+        cell.magazineSubtitleLabel.font = .systemFont(ofSize: 16, weight: .bold)
+        cell.magazineSubtitleLabel.numberOfLines = 1
+        
+        cell.magazineDateLabel.text = item.date
+        cell.magazineDateLabel.textColor = .lightGray
+        cell.magazineDateLabel.textAlignment = .right
+        cell.magazineDateLabel.font = .systemFont(ofSize: 14, weight: .bold)
+        cell.magazineDateLabel.numberOfLines = 1
+        
+        cell.tag = indexPath.row
         return cell
     }
-    */
 
     /*
     // Override to support conditional editing of the table view.

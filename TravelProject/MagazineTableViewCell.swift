@@ -9,15 +9,18 @@ import UIKit
 
 class MagazineTableViewCell: UITableViewCell {
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
+    @IBOutlet var magazineImageView: UIImageView!
+    @IBOutlet var magazineTitleLabel: UILabel!
+    @IBOutlet var magazineSubtitleLabel: UILabel!
+    @IBOutlet var magazineDateLabel: UILabel!
+    
+//    [memo] 이게 몰까? > Xib 와 Nib 에 대해서 알아보기!
+//    override func awakeFromNib() {
+//        super.awakeFromNib()
+//    }
+    
+//    [memo] 이건 몰까?
+//    override func prepareForReuse() {
+//    }
 
 }
