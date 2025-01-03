@@ -49,7 +49,7 @@ class MagazineTableViewController: UITableViewController {
         cell.magazineTitleLabel.text = item.title
         cell.magazineTitleLabel.textColor = .black
         cell.magazineTitleLabel.textAlignment = .left
-        cell.magazineTitleLabel.font = .systemFont(ofSize: 18, weight: .black)
+        cell.magazineTitleLabel.font = .systemFont(ofSize: 20, weight: .black)
         cell.magazineTitleLabel.numberOfLines = 2
         
         cell.magazineSubtitleLabel.text = item.subtitle
