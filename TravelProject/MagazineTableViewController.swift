@@ -17,6 +17,19 @@ class MagazineTableViewController: UITableViewController {
         navigationItem.title = "SeSAC TRAVEL"
     }
 
+    // didSelectedRowAt 메서드가 아니더라도
+    // Cell의 액션을 정의하고 화면전환 데이터전달 다 할 수 있다니 정말 편리하군...
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let selectedCell = sender as! UITableViewCell
+        let index = selectedCell.tag
+
+        if segue.identifier == "webViewSegue" {
+            if let destination = segue.destination as? WebViewController {
+                destination.urlString = magazineList[index].link
+            }
+        }
+    }
+    
     // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -65,5 +78,4 @@ class MagazineTableViewController: UITableViewController {
         cell.tag = indexPath.row
         return cell
     }
-
 }

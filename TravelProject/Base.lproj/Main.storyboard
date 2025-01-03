@@ -3,6 +3,7 @@
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -75,6 +76,7 @@
                                     <outlet property="magazineImageView" destination="hFh-6n-o3d" id="y6T-5q-fBh"/>
                                     <outlet property="magazineSubtitleLabel" destination="4it-yQ-bxi" id="wuu-1K-r3n"/>
                                     <outlet property="magazineTitleLabel" destination="5gW-DS-9Oe" id="OH8-05-kKf"/>
+                                    <segue destination="uK7-Bh-Ens" kind="show" identifier="webViewSegue" id="pzG-Zs-n0J"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -88,6 +90,41 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f5Y-Qg-GyA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2678.6259541984732" y="-232.3943661971831"/>
+        </scene>
+        <!--Web View Controller-->
+        <scene sceneID="cfF-6L-5en">
+            <objects>
+                <viewController id="uK7-Bh-Ens" customClass="WebViewController" customModule="TravelProject" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="afM-zP-Uwe">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Htw-CZ-D8l">
+                                <rect key="frame" x="0.0" y="103" width="393" height="666"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="woa-Wu-bVi"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Htw-CZ-D8l" firstAttribute="leading" secondItem="woa-Wu-bVi" secondAttribute="leading" id="6ab-Aj-TA2"/>
+                            <constraint firstItem="woa-Wu-bVi" firstAttribute="trailing" secondItem="Htw-CZ-D8l" secondAttribute="trailing" id="8DA-wW-Ezh"/>
+                            <constraint firstItem="woa-Wu-bVi" firstAttribute="bottom" secondItem="Htw-CZ-D8l" secondAttribute="bottom" id="fG3-Wb-DGU"/>
+                            <constraint firstItem="Htw-CZ-D8l" firstAttribute="top" secondItem="woa-Wu-bVi" secondAttribute="top" id="zhT-Yr-ZkH"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="rJ8-wP-260"/>
+                    <connections>
+                        <outlet property="webView" destination="Htw-CZ-D8l" id="Alz-8a-luY"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bo6-qN-DkU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3616" y="-232"/>
         </scene>
         <!--Table View Controller-->
         <scene sceneID="OdL-3e-R1Q">
