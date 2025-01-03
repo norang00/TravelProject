@@ -14,7 +14,6 @@ class MagazineTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         navigationItem.title = "SeSAC TRAVEL"
     }
 
@@ -46,7 +45,18 @@ class MagazineTableViewController: UITableViewController {
         cell.magazineSubtitleLabel.font = .systemFont(ofSize: 16, weight: .bold)
         cell.magazineSubtitleLabel.numberOfLines = 1
         
-        cell.magazineDateLabel.text = item.date
+        let date = item.date.map { String($0) }
+        print(date)
+        let dateText = "\(date[0]+date[1])년 \(date[2]+date[3])월 \(date[4]+date[5])일"
+        /* [고민한 점]
+         String 을 분할해서 Char 배열로 만들어서 반복문을 돌린다든가,
+         String Extension 을 만들어서 DateFormatter를 역으로 처리한다거나,
+         여러 방법 생각해봤는데 이게 제일 간단하게 두줄만에 끝나는거 같다.
+         허술하고 간단해 보여도 주어진 데이터에 가장 적합한 처리 방법인 것 같기도...?
+         문자열 처리하는 방법을 여러가지 알아 볼 수 있어서 좋았다!
+         */
+        
+        cell.magazineDateLabel.text = dateText
         cell.magazineDateLabel.textColor = .lightGray
         cell.magazineDateLabel.textAlignment = .right
         cell.magazineDateLabel.font = .systemFont(ofSize: 14, weight: .bold)
@@ -55,50 +65,5 @@ class MagazineTableViewController: UITableViewController {
         cell.tag = indexPath.row
         return cell
     }
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
