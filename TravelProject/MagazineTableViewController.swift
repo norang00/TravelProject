@@ -44,7 +44,7 @@ class MagazineTableViewController: UITableViewController {
 
         cell.magazineImageView.kf.setImage(with: imageURL)
         cell.magazineImageView.contentMode = .scaleAspectFill
-        cell.magazineImageView.layer.cornerRadius = 16
+        cell.magazineImageView.layer.cornerRadius = 12
 
         cell.magazineTitleLabel.text = item.title
         cell.magazineTitleLabel.textColor = .black
