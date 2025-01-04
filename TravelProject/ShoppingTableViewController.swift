@@ -22,9 +22,7 @@ class ShoppingTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         navigationItem.title = "쇼핑"
-        
         setAddView()
     }
 
@@ -114,7 +112,6 @@ class ShoppingTableViewController: UITableViewController {
     }
     
     @IBAction func textFieldEditingChanged(_ sender: UITextField) {
-        print(#function)
         guard let inputText = addTextField.text else { return }
         
         // 공백 제거한 문자열이 0보다 클때만 추가 버튼 활성화하기

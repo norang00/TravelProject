@@ -16,13 +16,10 @@ class TravelTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         navigationItem.title = "도시 상세 정보"
-
     }
     
     @objc func likeButtonTapped(_ sender: UIButton) {
-        print(#function, sender.tag)
         travelList[sender.tag].like?.toggle()
         tableView.reloadRows(at: [IndexPath(row: sender.tag, section: 0)], with: .automatic)
         /* [고민한 부분]

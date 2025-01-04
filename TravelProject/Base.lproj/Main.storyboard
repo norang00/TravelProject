@@ -481,6 +481,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="tintColor" systemColor="labelColor"/>
+                        <color key="selectedImageTintColor" systemColor="labelColor"/>
                     </tabBar>
                     <connections>
                         <segue destination="bIx-6H-EEo" kind="relationship" relationship="viewControllers" id="VFi-wy-0Ql"/>
@@ -492,15 +493,16 @@
             </objects>
             <point key="canvasLocation" x="131" y="725"/>
         </scene>
-        <!--Item-->
+        <!--Magazine-->
         <scene sceneID="ylK-FY-TNY">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="bIx-6H-EEo" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="zpb-bg-jWc"/>
+                    <tabBarItem key="tabBarItem" title="Magazine" image="magazine" catalog="system" id="zpb-bg-jWc"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="aht-SX-9jP">
                         <rect key="frame" x="0.0" y="59" width="393" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" systemColor="labelColor"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -511,15 +513,16 @@
             </objects>
             <point key="canvasLocation" x="1751.9083969465648" y="-232.3943661971831"/>
         </scene>
-        <!--Item-->
+        <!--Travel-->
         <scene sceneID="9Lf-7x-PTr">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="477-zz-jgc" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="s3P-8d-Iry"/>
+                    <tabBarItem key="tabBarItem" title="Travel" image="suitcase.rolling" catalog="system" id="s3P-8d-Iry"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="TAu-7e-hnZ">
                         <rect key="frame" x="0.0" y="59" width="393" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" systemColor="labelColor"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -530,15 +533,16 @@
             </objects>
             <point key="canvasLocation" x="1752" y="489"/>
         </scene>
-        <!--Item-->
+        <!--Shopping-->
         <scene sceneID="ttE-wv-4l6">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="UmE-dZ-Sqe" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="ji5-jE-STt"/>
+                    <tabBarItem key="tabBarItem" title="Shopping" image="bag" catalog="system" id="ji5-jE-STt"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="prG-CG-MCQ">
                         <rect key="frame" x="0.0" y="59" width="393" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" systemColor="labelColor"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -551,6 +555,9 @@
         </scene>
     </scenes>
     <resources>
+        <image name="bag" catalog="system" width="128" height="128"/>
+        <image name="magazine" catalog="system" width="110" height="128"/>
+        <image name="suitcase.rolling" catalog="system" width="91" height="128"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
