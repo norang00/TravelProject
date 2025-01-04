@@ -392,7 +392,7 @@
                             </constraints>
                         </view>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="shoppingCell" rowHeight="44" id="N5W-HP-g7V" customClass="ShoppingTableViewCell" customModule="TravelProject" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="shoppingCell" rowHeight="44" id="N5W-HP-g7V" customClass="ShoppingTableViewCell" customModule="TravelProject" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="125" width="393" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="N5W-HP-g7V" id="8V8-y6-N4p">
@@ -464,6 +464,7 @@
                         <outlet property="addBackgroundView" destination="5MJ-LQ-jtK" id="xaW-NV-dXt"/>
                         <outlet property="addButton" destination="VP4-3b-3SK" id="Utm-W7-lcf"/>
                         <outlet property="addTextField" destination="iQy-2U-TKd" id="MKV-t7-16G"/>
+                        <outlet property="stretchView" destination="v1U-QF-30X" id="7cN-RF-dfF"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UN1-Y7-wxh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

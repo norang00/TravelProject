@@ -9,6 +9,7 @@ import UIKit
 
 class ShoppingTableViewController: UITableViewController {
 
+    @IBOutlet var stretchView: UIView!
     @IBOutlet var addBackgroundView: UIView!
     @IBOutlet var addTextField: UITextField!
     @IBOutlet var addButton: UIButton!
@@ -79,7 +80,24 @@ class ShoppingTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 44
     }
-
+    
+//    재도전..실패...
+//    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
+//        let offsetY = scrollView.contentOffset.y
+//        addBackgroundView.layer.frame.size.height = -offsetY
+//    }
+    
+    override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        // "삭제" 동작을 추가
+        let action = UIContextualAction(style: .destructive, title: "삭제", handler: {(action, view, completionHandler) in
+            self.shoppingList.remove(at: indexPath.row)
+               completionHandler(true)
+           })
+           
+        // 스와이프에 나타낼 액션들을 담아서 리턴해준다
+        return UISwipeActionsConfiguration(actions: [action])
+    }
+    
     func setAddView() {
         addBackgroundView.layer.cornerRadius = 8
         addBackgroundView.layer.backgroundColor = UIColor.shoppingBackground.cgColor
