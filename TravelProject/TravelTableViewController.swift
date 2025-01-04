@@ -10,7 +10,7 @@ import Kingfisher
 
 class TravelTableViewController: UITableViewController {
     
-    let travelList = TravelInfo().travel
+    var travelList = TravelInfo().travel
     let adColorList = [UIColor.adColor1, UIColor.adColor2]
     var adCount = 0
 
@@ -20,6 +20,20 @@ class TravelTableViewController: UITableViewController {
         navigationItem.title = "도시 상세 정보"
 
     }
+    
+    @objc func likeButtonTapped(_ sender: UIButton) {
+        print(#function, sender.tag)
+        travelList[sender.tag].like?.toggle()
+        tableView.reloadRows(at: [IndexPath(row: sender.tag, section: 0)], with: .automatic)
+        /* [고민한 부분]
+         tableView.reloadData() 했더니 영향주고 싶지 않은 adView 도 색이 자꾸 바뀌어서
+         특정 row 만 다시 로드하는 방법을 찾아서 적용해보았다.
+         지금은 section 이 나뉘어져있지 않아서 이렇게 할 수 있는데, 나중에 section 도 나뉘면 어떻게하지?
+         tag에 붙여서 작성하고 여기서 분해하는 작업을 해주어야 할까?
+         그거랑 별개로 애초에 adView 의 색상을 이렇게 count 로 적용하는게 별로 좋은 방법은 아닌 것 같긴 한데...
+         */
+    }
+
 
     // MARK: - Table view data source
 
@@ -35,6 +49,7 @@ class TravelTableViewController: UITableViewController {
             let cell = tableView.dequeueReusableCell(withIdentifier: "adCell", for: indexPath) as! AdTableViewCell
             cell.adContentView.layer.cornerRadius = 8
             cell.adContentView.layer.backgroundColor = adColorList[adCount%2].cgColor
+            adCount += 1
 
             cell.adContentLabel.text = item.title
             cell.adContentLabel.font = .systemFont(ofSize: 14, weight: .black)
@@ -48,7 +63,7 @@ class TravelTableViewController: UITableViewController {
             cell.adBadgeLabel.layer.backgroundColor = UIColor.white.cgColor
 
             cell.separatorInset.left = cell.bounds.width * 1.5
-            adCount += 1
+
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "travelCell", for: indexPath) as! TravelTableViewCell
@@ -75,13 +90,14 @@ class TravelTableViewController: UITableViewController {
             cell.cityImageView.layer.cornerRadius = 6
 
             if let isLike = item.like {
+                cell.likeButton.tag = indexPath.row
                 cell.likeButton.setTitle("", for: .normal)
                 cell.likeButton.setImage(UIImage(named: isLike ? "filledHeart" : "emptyHeart"), for: .normal)
                 cell.likeButton.imageView?.contentMode = .scaleAspectFit
+                cell.likeButton.addTarget(self, action: #selector(likeButtonTapped), for: .touchUpInside)
             }
             
             if indexPath.row+1 != travelList.count {
-                print("index \(indexPath.row) count \(travelList.count)")
                 if travelList[indexPath.row+1].ad {
                     cell.separatorInset.left = cell.bounds.width * 1.5
                 }
@@ -89,7 +105,7 @@ class TravelTableViewController: UITableViewController {
             /* [고민되는 부분]
              다음 카드가 ad 면 seperator 의 left inset 을 밀어버려서 안보이게 하고 있는데,
              다음 카드를 확인할때마다 결국 한번씩 리스트 인덱스를 또 가져와서 확인해야 하는 것이 조금 덜 효율적으로 느껴진다.
-             하나의 Cell 을 그릴때마다 결국 두개의 데이터를 확인하고 있는 셈이어서 그렇게 보이는 것 같다.
+             하나의 Cell 을 그릴때마다 결국 두개의 데이터를 확인하고 있는 셈이어서 그런 것 같다.
              다음 데이터의 특정 부분만 엿보고 싶을때 쓸 수 잇는 방법이 없을까??
              */
             

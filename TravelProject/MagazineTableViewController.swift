@@ -29,7 +29,7 @@ class MagazineTableViewController: UITableViewController {
             }
         }
     }
-    
+        
     // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -59,9 +59,8 @@ class MagazineTableViewController: UITableViewController {
         cell.magazineSubtitleLabel.numberOfLines = 1
         
         let date = item.date.map { String($0) }
-        print(date)
         let dateText = "\(date[0]+date[1])년 \(date[2]+date[3])월 \(date[4]+date[5])일"
-        /* [고민한 점]
+        /* [고민한 부분]
          String 을 분할해서 Char 배열로 만들어서 반복문을 돌린다든가,
          String Extension 을 만들어서 DateFormatter를 역으로 처리한다거나,
          여러 방법 생각해봤는데 이게 제일 간단하게 두줄만에 끝나는거 같다.
@@ -78,4 +77,5 @@ class MagazineTableViewController: UITableViewController {
         cell.tag = indexPath.row
         return cell
     }
+    
 }
