@@ -10,8 +10,8 @@ import UIKit
 class ShoppingTableViewCell: UITableViewCell {
 
     @IBOutlet var itemBackgroundView: UIView!
-    @IBOutlet var checkImageView: UIImageView!
+    @IBOutlet var checkButton: UIButton!
     @IBOutlet var itemTitleLabel: UILabel!
-    @IBOutlet var starImageView: UIImageView!
+    @IBOutlet var starButton: UIButton!
     
 }

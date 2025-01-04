@@ -35,6 +35,14 @@ class ShoppingTableViewController: UITableViewController {
         addButton.isEnabled = false
     }
     
+    @objc func checkButtonTapped(_ sender: UIButton) {
+        shoppingList[sender.tag].isChecked.toggle()
+    }
+
+    @objc func starButtonTapped(_ sender: UIButton) {
+        shoppingList[sender.tag].isStarred.toggle()
+    }
+
     // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -43,21 +51,25 @@ class ShoppingTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "shoppingCell", for: indexPath) as! ShoppingTableViewCell
-        cell.tag = indexPath.row
-
         let item = shoppingList[indexPath.row]
         
         cell.itemBackgroundView.layer.cornerRadius = 8
         cell.itemBackgroundView.layer.backgroundColor = UIColor.shoppingBackground.cgColor
         
-        cell.checkImageView.image = UIImage(systemName: item.isChecked ? "checkmark.square.fill" : "checkmark.square")
-        cell.checkImageView.contentMode = .scaleAspectFit
+        cell.checkButton.tag = indexPath.row
+        cell.checkButton.setTitle("", for: .normal)
+        cell.checkButton.setImage(UIImage(systemName: item.isChecked ? "checkmark.square.fill" : "checkmark.square"), for: .normal)
+        cell.checkButton.imageView?.contentMode = .scaleAspectFit
+        cell.checkButton.addTarget(self, action: #selector(checkButtonTapped), for: .touchUpInside)
 
         cell.itemTitleLabel.text = item.itemTitle
         cell.itemTitleLabel.font = .systemFont(ofSize: 14, weight: .medium)
         
-        cell.starImageView.image = UIImage(systemName: item.isChecked ? "star.fill" : "star")
-        cell.starImageView.contentMode = .scaleAspectFit
+        cell.starButton.tag = indexPath.row
+        cell.starButton.setTitle("", for: .normal)
+        cell.starButton.setImage(UIImage(systemName: item.isStarred ? "star.fill" : "star"), for: .normal)
+        cell.starButton.imageView?.contentMode = .scaleAspectFit
+        cell.starButton.addTarget(self, action: #selector(starButtonTapped), for: .touchUpInside)
         
         cell.tintColor = .black
 
