@@ -57,7 +57,7 @@ class MagazineTableViewController: UITableViewController {
         cell.magazineSubtitleLabel.textAlignment = .left
         cell.magazineSubtitleLabel.font = .systemFont(ofSize: 16, weight: .bold)
         cell.magazineSubtitleLabel.numberOfLines = 1
-        
+                
         let date = item.date.map { String($0) }
         let dateText = "\(date[0]+date[1])년 \(date[2]+date[3])월 \(date[4]+date[5])일"
         /* [고민한 부분]
@@ -67,6 +67,15 @@ class MagazineTableViewController: UITableViewController {
          허술하고 간단해 보여도 주어진 데이터에 가장 적합한 처리 방법인 것 같기도...?
          문자열 처리하는 방법을 여러가지 알아 볼 수 있어서 좋았다!
          */
+//        let dateFormatter = DateFormatter()
+//        dateFormatter.dateFormat = "yyMMdd"
+//        
+//        var dateText = ""
+//        if let date = dateFormatter.date(from: item.date) {
+//            dateFormatter.dateFormat = "yy년 MM월 dd일"
+//            dateText = dateFormatter.string(from: date)
+//        }
+
         
         cell.magazineDateLabel.text = dateText
         cell.magazineDateLabel.textColor = .lightGray
