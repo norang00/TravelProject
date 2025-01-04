@@ -14,4 +14,6 @@ class TravelTableViewCell: UITableViewCell {
     @IBOutlet var detailInfoLabel: UILabel!
     @IBOutlet var cityImageView: UIImageView!
     @IBOutlet var likeButton: UIButton!
+    @IBOutlet var starImageViews: [UIImageView]!
+    
 }

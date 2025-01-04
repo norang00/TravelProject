@@ -72,12 +72,23 @@ class TravelTableViewController: UITableViewController {
             cell.titleLabel.textColor = .black
             cell.titleLabel.font = .systemFont(ofSize: 15, weight: .bold)
             
+            var grade = item.grade ?? 0
+            for index in 0..<5 {
+                if grade > 1 {
+                    cell.starImageViews[index].image = UIImage(named: "yellowStar")
+                } else {
+                    cell.starImageViews[index].image = UIImage(named: "grayStar")
+                }
+                cell.starImageViews[index].contentMode = .scaleAspectFit
+                grade -= 1
+            }
+            
             cell.descriptionLabel.text = item.description
             cell.descriptionLabel.textColor = .gray
             cell.descriptionLabel.font = .systemFont(ofSize: 13, weight: .semibold)
             cell.descriptionLabel.numberOfLines = 0
             cell.descriptionLabel.frame.size = cell.descriptionLabel.intrinsicContentSize
-            cell.detailInfoLabel.text = "★★★★★ (\(item.grade!)) ･ 저장 \(item.save!.formatted())"
+            cell.detailInfoLabel.text = "(\(item.grade!)) ･ 저장 \(item.save!.formatted())"
             cell.detailInfoLabel.textColor = .lightGray
             cell.detailInfoLabel.font = .systemFont(ofSize: 12, weight: .bold)
                         
