@@ -199,12 +199,14 @@
                                                             <constraints>
                                                                 <constraint firstAttribute="width" secondItem="vTE-3c-nCy" secondAttribute="height" multiplier="1:1" id="HtS-2R-Lbc"/>
                                                                 <constraint firstAttribute="height" constant="14" id="VVj-Tg-wI8"/>
+                                                                <constraint firstAttribute="width" secondItem="vTE-3c-nCy" secondAttribute="height" multiplier="1:1" id="XZM-Rk-3cK"/>
                                                             </constraints>
                                                         </imageView>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="oHz-k0-jXc">
                                                             <rect key="frame" x="28" y="0.0" width="14" height="14"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="14" id="7Rv-C4-Njz"/>
+                                                                <constraint firstAttribute="width" secondItem="oHz-k0-jXc" secondAttribute="height" multiplier="1:1" id="I8D-ai-feP"/>
                                                                 <constraint firstAttribute="width" secondItem="oHz-k0-jXc" secondAttribute="height" multiplier="1:1" id="x1J-AM-ku9"/>
                                                             </constraints>
                                                         </imageView>
@@ -213,22 +215,18 @@
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="14" id="7OI-Yd-AIz"/>
                                                                 <constraint firstAttribute="width" secondItem="rIR-8c-zwp" secondAttribute="height" multiplier="1:1" id="mIz-RM-ttG"/>
+                                                                <constraint firstAttribute="width" secondItem="rIR-8c-zwp" secondAttribute="height" multiplier="1:1" id="q9t-sy-llV"/>
                                                             </constraints>
                                                         </imageView>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ei9-k3-zsm">
                                                             <rect key="frame" x="56" y="0.0" width="14" height="14"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="14" id="2gL-Nb-I8O"/>
+                                                                <constraint firstAttribute="width" secondItem="ei9-k3-zsm" secondAttribute="height" multiplier="1:1" id="G8H-pf-Vnu"/>
                                                                 <constraint firstAttribute="width" secondItem="ei9-k3-zsm" secondAttribute="height" multiplier="1:1" id="bDi-K6-UUn"/>
                                                             </constraints>
                                                         </imageView>
                                                     </subviews>
-                                                    <constraints>
-                                                        <constraint firstItem="ei9-k3-zsm" firstAttribute="width" secondItem="ei9-k3-zsm" secondAttribute="height" multiplier="1:1" id="G8H-pf-Vnu"/>
-                                                        <constraint firstItem="oHz-k0-jXc" firstAttribute="width" secondItem="oHz-k0-jXc" secondAttribute="height" multiplier="1:1" id="I8D-ai-feP"/>
-                                                        <constraint firstItem="vTE-3c-nCy" firstAttribute="width" secondItem="vTE-3c-nCy" secondAttribute="height" multiplier="1:1" id="XZM-Rk-3cK"/>
-                                                        <constraint firstItem="rIR-8c-zwp" firstAttribute="width" secondItem="rIR-8c-zwp" secondAttribute="height" multiplier="1:1" id="q9t-sy-llV"/>
-                                                    </constraints>
                                                 </stackView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F2a-ad-8YX">
                                                     <rect key="frame" x="72" y="0.0" width="41.333333333333343" height="20.333333333333332"/>
@@ -338,16 +336,16 @@
             </objects>
             <point key="canvasLocation" x="2678.6259541984732" y="488.73239436619718"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Shopping Table View Controller-->
         <scene sceneID="yeJ-d9-jg4">
             <objects>
-                <tableViewController id="VoF-rx-BkK" sceneMemberID="viewController">
+                <tableViewController id="VoF-rx-BkK" customClass="ShoppingTableViewController" customModule="TravelProject" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="KU8-Pl-Tov">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="N5W-HP-g7V">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="N5W-HP-g7V" customClass="ShoppingTableViewCell" customModule="TravelProject" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="50" width="393" height="43.666667938232422"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="N5W-HP-g7V" id="8V8-y6-N4p">
