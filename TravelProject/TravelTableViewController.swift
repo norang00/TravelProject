@@ -84,8 +84,6 @@ class TravelTableViewController: UITableViewController {
             cell.adBadgeLabel.layer.backgroundColor = UIColor.white.cgColor
 
             cell.separatorInset.left = cell.bounds.width * 1.5
-
-            print("\(indexPath.row) cell.seperatorInset.left \(cell.separatorInset.left)")
             
             return cell
         } else {
@@ -132,12 +130,8 @@ class TravelTableViewController: UITableViewController {
             }
             
             let nextIndex = indexPath.row + 1
-            
-            // Inset 한번씩 초기화해주어야 함
-            cell.separatorInset.left = 20.0
-
+            cell.separatorInset.left = 20.0 // Inset 한번씩 초기화해주어야 함
             if nextIndex < travelList.count, travelList[nextIndex].ad {
-                print(#function, "indexPath \(indexPath.row), ad \(travelList[nextIndex].ad)")
                 cell.separatorInset.left = cell.bounds.width * 1.5
             }
             /* [고민되는 부분]
@@ -148,8 +142,6 @@ class TravelTableViewController: UITableViewController {
              + 테이블뷰에서는 Cell 재사용의 특성 때문에 반복문을 통해서 설정을 조절하는 것이 어렵다는 것을 알았다.
              */
             
-            print("\(indexPath.row) cell.seperatorInset.left \(cell.separatorInset.left)")
-
             return cell
         }
     }
