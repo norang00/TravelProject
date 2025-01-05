@@ -85,6 +85,8 @@ class TravelTableViewController: UITableViewController {
 
             cell.separatorInset.left = cell.bounds.width * 1.5
 
+            print("\(indexPath.row) cell.seperatorInset.left \(cell.separatorInset.left)")
+            
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "travelCell", for: indexPath) as! TravelTableViewCell
@@ -129,19 +131,25 @@ class TravelTableViewController: UITableViewController {
                 cell.likeButton.addTarget(self, action: #selector(likeButtonTapped), for: .touchUpInside)
             }
             
-            if indexPath.row+1 != travelList.count {
-                if travelList[indexPath.row+1].ad {
-//                    print(#function, "indexPath \(indexPath.row), ad \(travelList[indexPath.row+1].ad)")
-                    cell.separatorInset.left = cell.bounds.width * 1.5
-                }
+            let nextIndex = indexPath.row + 1
+            
+            // Inset 한번씩 초기화해주어야 함
+            cell.separatorInset.left = 20.0
+
+            if nextIndex < travelList.count, travelList[nextIndex].ad {
+                print(#function, "indexPath \(indexPath.row), ad \(travelList[nextIndex].ad)")
+                cell.separatorInset.left = cell.bounds.width * 1.5
             }
             /* [고민되는 부분]
              다음 카드가 ad 면 seperator 의 left inset 을 밀어버려서 안보이게 하고 있는데,
              다음 카드를 확인할때마다 결국 한번씩 리스트 인덱스를 또 가져와서 확인해야 하는 것이 조금 덜 효율적으로 느껴진다.
              하나의 Cell 을 그릴때마다 결국 두개의 데이터를 확인하고 있는 셈이어서 그런 것 같다.
              다음 데이터의 특정 부분만 엿보고 싶을때 쓸 수 잇는 방법이 없을까??
+             + 테이블뷰에서는 Cell 재사용의 특성 때문에 반복문을 통해서 설정을 조절하는 것이 어렵다는 것을 알았다.
              */
             
+            print("\(indexPath.row) cell.seperatorInset.left \(cell.separatorInset.left)")
+
             return cell
         }
     }
