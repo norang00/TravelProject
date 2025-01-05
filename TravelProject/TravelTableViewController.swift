@@ -95,7 +95,7 @@ class TravelTableViewController: UITableViewController {
             
             var grade = item.grade ?? 0
             for index in 0..<5 {
-                if grade > 1 {
+                if grade >= 1 {
                     cell.starImageViews[index].image = UIImage(named: "yellowStar")
                 } else {
                     cell.starImageViews[index].image = UIImage(named: "grayStar")
