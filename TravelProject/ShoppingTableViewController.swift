@@ -49,29 +49,17 @@ class ShoppingTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "shoppingCell", for: indexPath) as! ShoppingTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: ShoppingTableViewCell.identifier, for: indexPath) as! ShoppingTableViewCell
         let item = shoppingList[indexPath.row]
         
-        cell.itemBackgroundView.layer.cornerRadius = 8
-        cell.itemBackgroundView.layer.backgroundColor = UIColor.shoppingBackground.cgColor
-        
         cell.checkButton.tag = indexPath.row
-        cell.checkButton.setTitle("", for: .normal)
-        cell.checkButton.setImage(UIImage(systemName: item.isChecked ? "checkmark.square.fill" : "checkmark.square"), for: .normal)
-        cell.checkButton.imageView?.contentMode = .scaleAspectFit
         cell.checkButton.addTarget(self, action: #selector(checkButtonTapped), for: .touchUpInside)
-
-        cell.itemTitleLabel.text = item.itemTitle
-        cell.itemTitleLabel.font = .systemFont(ofSize: 14, weight: .medium)
         
         cell.starButton.tag = indexPath.row
-        cell.starButton.setTitle("", for: .normal)
-        cell.starButton.setImage(UIImage(systemName: item.isStarred ? "star.fill" : "star"), for: .normal)
-        cell.starButton.imageView?.contentMode = .scaleAspectFit
         cell.starButton.addTarget(self, action: #selector(starButtonTapped), for: .touchUpInside)
         
-        cell.tintColor = .black
-
+        cell.configureData(item)
+        
         return cell
     }
     
@@ -79,20 +67,13 @@ class ShoppingTableViewController: UITableViewController {
         return 44
     }
     
-//    재도전..실패...
-//    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
-//        let offsetY = scrollView.contentOffset.y
-//        addBackgroundView.layer.frame.size.height = -offsetY
-//    }
-    
     override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        // "삭제" 동작을 추가
+
         let action = UIContextualAction(style: .destructive, title: "삭제", handler: {(action, view, completionHandler) in
             self.shoppingList.remove(at: indexPath.row)
                completionHandler(true)
            })
            
-        // 스와이프에 나타낼 액션들을 담아서 리턴해준다
         return UISwipeActionsConfiguration(actions: [action])
     }
     
@@ -114,7 +95,6 @@ class ShoppingTableViewController: UITableViewController {
     @IBAction func textFieldEditingChanged(_ sender: UITextField) {
         guard let inputText = addTextField.text else { return }
         
-        // 공백 제거한 문자열이 0보다 클때만 추가 버튼 활성화하기
         if inputText.trimmingCharacters(in: [" "]).count > 0 {
             addButton.isEnabled = true
         } else {
