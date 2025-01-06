@@ -5,9 +5,11 @@
 //  Created by Kyuhee hong on 1/3/25.
 //
 
-import Foundation
+import UIKit
 
 struct Travel {
+    static let defaultImage: UIImage = UIImage(named:"defaultImage")!
+    
     let title: String
     let description: String?
     let travel_image: String?
@@ -24,5 +26,13 @@ struct Travel {
         self.save = save
         self.like = like
         self.ad = ad
+    }
+
+    var imageURL: URL? {
+        return URL(string: travel_image ?? "")
+    }
+    
+    var detailInfo: String {
+        return "(\(grade!)) ･ 저장 \(save!.formatted())"
     }
 }
