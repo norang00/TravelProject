@@ -32,11 +32,6 @@ class CityTableViewController: UITableViewController {
         tableView.register(nib, forCellReuseIdentifier: CityViewCell.identifier)
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        tableView.reloadData()
-    }
-    
     // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

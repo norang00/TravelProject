@@ -58,12 +58,6 @@ class CityViewCell: UITableViewCell {
         footerLabel.font = .systemFont(ofSize: 14, weight: .medium)
     }
     
-//    func configureData(_ item: City) {
-//        cityImageView.kf.setImage(with: item.imageURL)
-//        cityNameLabel.text = item.city_name_kor_eng
-//        footerLabel.text = item.city_explain
-//    }
-    
     func configureData(_ item: City, _ searchText: String) {
         cityImageView.kf.setImage(with: item.imageURL)
         
