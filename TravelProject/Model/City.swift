@@ -24,11 +24,11 @@ struct City {
     }
     
     var imageURL: URL? {
-        return URL(string: city_image ?? "")
+        return URL(string: city_image)
     }
     
-    var detailInfo: String {
-        return ""
+    var city_name_kor_eng: String {
+        return "\(city_name) | \(city_english_name)"
     }
 }
 

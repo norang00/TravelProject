@@ -479,9 +479,51 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="JGN-4K-eF7">
+                            <rect key="frame" x="0.0" y="0.0" width="393" height="109"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="UQP-4p-8OC">
+                                    <rect key="frame" x="8" y="71" width="377" height="31"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="30" id="Zwb-ad-BTA"/>
+                                    </constraints>
+                                    <segments>
+                                        <segment title=""/>
+                                        <segment title="Second"/>
+                                        <segment title=""/>
+                                    </segments>
+                                    <connections>
+                                        <action selector="filterSegmentedControl:" destination="Dsb-ZT-8sf" eventType="valueChanged" id="4cm-0P-TPx"/>
+                                    </connections>
+                                </segmentedControl>
+                                <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="VV3-Tu-3uA" customClass="searchbar" customModule="TravelProject" customModuleProvider="target">
+                                    <rect key="frame" x="6" y="8" width="381" height="55"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="55" id="G2b-ao-pGs"/>
+                                    </constraints>
+                                    <textInputTraits key="textInputTraits"/>
+                                    <connections>
+                                        <outlet property="delegate" destination="Dsb-ZT-8sf" id="Ieg-Yz-kJb"/>
+                                    </connections>
+                                </searchBar>
+                            </subviews>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <constraints>
+                                <constraint firstItem="VV3-Tu-3uA" firstAttribute="leading" secondItem="JGN-4K-eF7" secondAttribute="leading" constant="6" id="LeL-Xj-bm8"/>
+                                <constraint firstItem="UQP-4p-8OC" firstAttribute="top" secondItem="VV3-Tu-3uA" secondAttribute="bottom" constant="8" id="Ltq-MW-tZS"/>
+                                <constraint firstAttribute="trailing" secondItem="UQP-4p-8OC" secondAttribute="trailing" constant="8" id="PxZ-Fm-ii4"/>
+                                <constraint firstAttribute="trailing" secondItem="VV3-Tu-3uA" secondAttribute="trailing" constant="6" id="TFi-lO-fvS"/>
+                                <constraint firstItem="VV3-Tu-3uA" firstAttribute="centerX" secondItem="JGN-4K-eF7" secondAttribute="centerX" id="gAq-g8-QHp"/>
+                                <constraint firstItem="UQP-4p-8OC" firstAttribute="centerX" secondItem="JGN-4K-eF7" secondAttribute="centerX" id="jJT-nu-u8Y"/>
+                                <constraint firstItem="UQP-4p-8OC" firstAttribute="leading" secondItem="JGN-4K-eF7" secondAttribute="leading" constant="8" id="kDT-Nn-YzU"/>
+                                <constraint firstItem="VV3-Tu-3uA" firstAttribute="top" secondItem="JGN-4K-eF7" secondAttribute="top" constant="8" id="rJn-2q-mhh"/>
+                                <constraint firstAttribute="bottom" secondItem="UQP-4p-8OC" secondAttribute="bottom" constant="8" id="z6u-tl-XON"/>
+                            </constraints>
+                        </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="iek-yF-WfL">
-                                <rect key="frame" x="0.0" y="50" width="393" height="43.666667938232422"/>
+                                <rect key="frame" x="0.0" y="159" width="393" height="43.666667938232422"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="iek-yF-WfL" id="NGO-aJ-yNn">
                                     <rect key="frame" x="0.0" y="0.0" width="393" height="43.666667938232422"/>
@@ -495,10 +537,15 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="Vh8-Si-HPm"/>
+                    <connections>
+                        <outlet property="filterSegmentedControl" destination="UQP-4p-8OC" id="2zb-C0-tP7"/>
+                        <outlet property="searchBar" destination="VV3-Tu-3uA" id="xyL-nP-BzT"/>
+                        <outlet property="upperView" destination="JGN-4K-eF7" id="JBv-am-bsL"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2SX-7f-62J" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2679" y="2015"/>
+            <point key="canvasLocation" x="2678.6259541984732" y="2014.7887323943662"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="Erw-Sz-l3O">
@@ -583,15 +630,16 @@
             </objects>
             <point key="canvasLocation" x="1752" y="1243"/>
         </scene>
-        <!--Item-->
+        <!--City-->
         <scene sceneID="fh8-m2-EHi">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="6dO-21-Yb3" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="Tl8-U7-OSq"/>
+                    <tabBarItem key="tabBarItem" title="City" image="building.2" catalog="system" id="Tl8-U7-OSq"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="QGW-po-qRK">
                         <rect key="frame" x="0.0" y="59" width="393" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" systemColor="labelColor"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -605,6 +653,7 @@
     </scenes>
     <resources>
         <image name="bag" catalog="system" width="128" height="128"/>
+        <image name="building.2" catalog="system" width="120" height="128"/>
         <image name="magazine" catalog="system" width="110" height="128"/>
         <image name="suitcase.rolling" catalog="system" width="91" height="128"/>
         <systemColor name="labelColor">
