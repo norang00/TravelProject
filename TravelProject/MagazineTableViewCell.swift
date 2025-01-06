@@ -24,7 +24,7 @@ class MagazineTableViewCell: UITableViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        magazineImageView.image = UIImage(named: "defaultImage")
+        magazineImageView.image = Magazine.defaultImage
     }
     
     func configure() {
@@ -48,14 +48,9 @@ class MagazineTableViewCell: UITableViewCell {
     }
     
     func configureData(_ item: Magazine) {
-        let imageURL = URL(string: item.photo_image)
-        magazineImageView.kf.setImage(with: imageURL)
-        
+        magazineImageView.kf.setImage(with: item.imageURL)
         magazineTitleLabel.text = item.title
         magazineSubtitleLabel.text = item.subtitle
-        
-        let date = item.date.map { String($0) }
-        let dateText = "\(date[0]+date[1])년 \(date[2]+date[3])월 \(date[4]+date[5])일"
-        magazineDateLabel.text = dateText
+        magazineDateLabel.text = item.formattedDate
     }
 }
