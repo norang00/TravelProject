@@ -10,6 +10,8 @@ import UIKit
 class CityTableViewController: UITableViewController {
     
     var cityList = CityInfo().city
+    var filteredList: [City] = []
+    var isFiltering: Bool = false
     
     @IBOutlet var upperView: UIView!
     @IBOutlet var searchBar: UISearchBar!
@@ -17,18 +19,49 @@ class CityTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        filteredList = cityList
+        searchBar.delegate = self
+
         navigationItem.title = "인기 도시"
         tableView.separatorStyle = .none
 
-        setUpperView()
+        setSearchBarView()
+        setSegmentedControlView()
         
         let nib = UINib(nibName: "CityViewCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: CityViewCell.identifier)
     }
     
-    func setUpperView() {
-        searchBar.searchBarStyle = .minimal
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        tableView.reloadData()
+    }
+    
+    // MARK: - Table view data source
+
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return isFiltering ? filteredList.count : cityList.count
+    }
+
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let item = isFiltering ? filteredList[indexPath.row] : cityList[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: CityViewCell.identifier, for: indexPath) as! CityViewCell
         
+        let searchText = searchBar.text?.trimmingCharacters(in: [" "]) ?? ""
+        cell.configureData(item, searchText)
+
+        return cell
+    }
+
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 150
+    }
+}
+
+// Segmented Control 관련
+extension CityTableViewController {
+    
+    func setSegmentedControlView() {
         let segmentTitles = ["모두", "국내", "해외"]
         for index in 0..<segmentTitles.count {
             filterSegmentedControl.setTitle(segmentTitles[index], forSegmentAt: index)
@@ -37,24 +70,6 @@ class CityTableViewController: UITableViewController {
             .font: UIFont.systemFont(ofSize: 12, weight: .bold)
         ]
         filterSegmentedControl.setTitleTextAttributes(selectedAttributes, for: .selected)
-    }
-    
-    // MARK: - Table view data source
-
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return cityList.count
-    }
-
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let item = cityList[indexPath.row]
-        let cell = tableView.dequeueReusableCell(withIdentifier: CityViewCell.identifier, for: indexPath) as! CityViewCell
-        cell.configureData(item)
-
-        return cell
-    }
-
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 150
     }
     
     @IBAction func filterSegmentedControl(_ sender: UISegmentedControl) {
@@ -73,11 +88,41 @@ class CityTableViewController: UITableViewController {
         }
         tableView.reloadData()
     }
-    
 }
 
-/* [고민되는 부분]
- 슬슬 버벅이기 시작한다.
- 로딩이 약간 느리더라도 예쁜 상태로 화면에 나타났으면 좋겠는데.
- 뷰 표시 순서라든가 바꿀 수 없나?
- */
+// SearchBar 관련
+extension CityTableViewController: UISearchBarDelegate {
+    
+    func setSearchBarView() {
+        searchBar.searchBarStyle = .minimal
+        searchBar.placeholder = "도시를 검색해 보세요!"
+    }
+
+    // 검색 창에 입력 중
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        filterBySearchInput(searchText)
+    }
+
+    // 검색 끝나고 엔터
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        filterBySearchInput(searchBar.text ?? "")
+        searchBar.resignFirstResponder()
+    }
+
+    func filterBySearchInput(_ searchText: String) {
+        let trimmedText = searchText.trimmingCharacters(in: [" "])
+        if trimmedText.isEmpty {
+            isFiltering = false
+            filteredList = []
+        } else {
+            isFiltering = true
+            filteredList = cityList.filter {
+                $0.city_name.localizedCaseInsensitiveContains(trimmedText) ||
+                $0.city_english_name.localizedCaseInsensitiveContains(trimmedText) ||
+                $0.city_explain.localizedCaseInsensitiveContains(trimmedText)
+            }
+        }
+        tableView.reloadData()
+    }
+    
+}
