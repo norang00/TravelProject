@@ -11,8 +11,6 @@ import Kingfisher
 class TravelTableViewController: UITableViewController {
     
     var travelList = TravelInfo().travel
-    let adColorList = [UIColor.adColor1, UIColor.adColor2]
-    var adCount = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,13 +34,7 @@ class TravelTableViewController: UITableViewController {
         if item.ad {
             let cell = tableView.dequeueReusableCell(withIdentifier: AdTableViewCell.identifier, for: indexPath) as! AdTableViewCell
             
-            if cell.tag == 0 {
-                cell.tag = adCount+1
-                adCount += 1
-            }
-            cell.adContentView.layer.backgroundColor = adColorList[(cell.tag-1)%2].cgColor
             cell.separatorInset.left = cell.bounds.width * 1.5
-            
             cell.configureData(item)
 
             return cell

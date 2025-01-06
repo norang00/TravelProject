@@ -40,5 +40,6 @@ class AdTableViewCell: UITableViewCell {
     
     func configureData(_ item: Travel) {
         adContentLabel.text = item.title
+        adContentView.backgroundColor = item.adColor
     }
 }
