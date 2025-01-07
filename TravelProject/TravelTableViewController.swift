@@ -14,6 +14,11 @@ class TravelTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
         navigationItem.title = "도시 상세 정보"
         setNavigationAppearance()
     }

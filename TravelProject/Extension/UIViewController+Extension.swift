@@ -10,10 +10,11 @@ import UIKit
 extension UIViewController {
     
     func setNavigationAppearance() {
+        navigationController?.navigationBar.tintColor = .black
+
         let navigationAppearance = UINavigationBarAppearance()
         navigationAppearance.backgroundColor = .white
         navigationAppearance.shadowColor = .lightGray
-        navigationController?.navigationBar.tintColor = .black
         navigationController?.navigationBar.scrollEdgeAppearance = navigationAppearance
     }
 }

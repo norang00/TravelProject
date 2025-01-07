@@ -17,10 +17,13 @@ class WebViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        navigationController?.navigationBar.topItem?.title = ""
-        
         loadWebPage(urlString)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.topItem?.title = ""
+        setNavigationAppearance()
     }
 
     private func loadWebPage(_ url: String) {

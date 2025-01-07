@@ -20,17 +20,23 @@ class CityTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         filteredList = cityList
+        
+        setSearchBarView()
         searchBar.delegate = self
 
-        navigationItem.title = "인기 도시"
-        setNavigationAppearance()
-        
-        tableView.separatorStyle = .none
-        setSearchBarView()
         setSegmentedControlView()
         
         let nib = UINib(nibName: "CityViewCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: CityViewCell.identifier)
+
+        tableView.separatorStyle = .none
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        navigationItem.title = "인기 도시"
+        setNavigationAppearance()
     }
     
     // MARK: - Table view data source

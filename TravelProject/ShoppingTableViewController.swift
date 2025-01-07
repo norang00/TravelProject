@@ -22,9 +22,14 @@ class ShoppingTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setAddView()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
         navigationItem.title = "쇼핑"
         setNavigationAppearance()
-        setAddView()
     }
 
     @IBAction func addButtonTapped(_ sender: UIButton) {
