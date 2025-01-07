@@ -137,18 +137,18 @@ extension CircleCityViewController: UICollectionViewDelegate, UICollectionViewDa
         print(#function)
 
         let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .vertical
-        layout.itemSize = CGSize(width: 170, height: 220)
-        layout.minimumLineSpacing = 8
-        layout.minimumInteritemSpacing = 8
-        layout.sectionInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
-        collectionView.collectionViewLayout = layout
+        let sectionSpacing: CGFloat = 20
+        let itemSpacing: CGFloat = 12
+        let width: CGFloat = UIScreen.main.bounds.width - itemSpacing - (sectionSpacing*2)
+        let itemWidth: CGFloat = width / 2
         
-        /* [고민한 부분]
-         layout 을 비율로 주었더니 너무 깨져서 한참 맞는 고정값을 찾아서 헤멨다.
-         Xib 로 그린 셀 자체 크기와 여기서 지정하는 아이템 사이즈랑 뭐가 우선해서 적용되는걸까?
-         수치를 여러가지 실험해봤는데 예상이랑 너무 다른 결과들만 나와서 실험 불가...
-         */
+        layout.itemSize = CGSize(width: itemWidth, height: itemWidth*1.4)
+        layout.scrollDirection = .vertical
+        layout.sectionInset = UIEdgeInsets(top: itemSpacing, left: sectionSpacing, bottom: itemSpacing, right: sectionSpacing)
+        layout.minimumLineSpacing = itemSpacing
+        layout.minimumInteritemSpacing = itemSpacing
+        
+        collectionView.collectionViewLayout = layout
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

@@ -26,10 +26,12 @@ class CircleCityCollectionViewCell: UICollectionViewCell {
     }
     
     func configure() {
-        print(#function)
-        
         cityImageView.contentMode = .scaleAspectFill
-        cityImageView.layer.cornerRadius = 65
+        cityImageView.layer.cornerRadius = cityImageView.frame.height/2 + 12
+        /* [고민되는 부분]
+         이미지뷰 비율을 1:1 로 주고, radius 를 이미지뷰의 반으로 지정했는데도 완벽한 구형이 나오지 않음
+         조금씩 숫자를 늘려가면서 그나마 비슷한 형태를 찾았지만 딱 들어맞지는 않는다.
+         */
         
         cityNameLabel.font = .systemFont(ofSize: 16, weight: .black)
         cityNameLabel.textColor = .black
@@ -39,8 +41,12 @@ class CircleCityCollectionViewCell: UICollectionViewCell {
         cityExplainLabel.font = .systemFont(ofSize: 12, weight: .medium)
         cityExplainLabel.textColor = .gray
         cityExplainLabel.textAlignment = .center
-        cityExplainLabel.contentMode = .top
         cityExplainLabel.numberOfLines = 0
+        cityExplainLabel.contentMode = .top
+        /* [고민되는 부분]
+         contentMode 를 top 으로 주었는데도 라벨 안에 한 줄만 있을 때 중간에 정렬되어 버림
+         contentMode 말고 다른 방법이 있나 찾아봐야 함.
+         */
     }
     
     func configureData(_ item: City, _ searchText: String) {
