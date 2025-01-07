@@ -70,4 +70,10 @@ class TravelTableViewController: UITableViewController {
         
     }
 
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: DetailViewController.identifier) as! DetailViewController
+        vc.travelCity = travelList[indexPath.row]
+        navigationController?.pushViewController(vc, animated: true)
+    }
 }

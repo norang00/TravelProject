@@ -14,10 +14,13 @@ class TravelTableViewCell: UITableViewCell {
     
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var descriptionLabel: UILabel!
-    @IBOutlet var detailInfoLabel: UILabel!
+
     @IBOutlet var cityImageView: UIImageView!
     @IBOutlet var likeButton: UIButton!
+
+    @IBOutlet var starWrappingView: UIView!
     @IBOutlet var starImageViews: [UIImageView]!
+    @IBOutlet var detailInfoLabel: UILabel!
  
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -45,6 +48,8 @@ class TravelTableViewCell: UITableViewCell {
         
         likeButton.setTitle("", for: .normal)
         likeButton.imageView?.contentMode = .scaleAspectFit
+        
+        starWrappingView.backgroundColor = .clear
     }
     
     func configureData(_ item: Travel) {
