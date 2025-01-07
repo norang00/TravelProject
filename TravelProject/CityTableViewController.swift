@@ -34,7 +34,6 @@ class CityTableViewController: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
         navigationItem.title = "인기 도시"
         setNavigationAppearance()
     }

@@ -5,6 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -673,7 +674,71 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2SX-7f-62J" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2678.6259541984732" y="2014.7887323943662"/>
+            <point key="canvasLocation" x="2679" y="2728"/>
+        </scene>
+        <!--Circle City View Controller-->
+        <scene sceneID="EqS-dz-oH1">
+            <objects>
+                <viewController storyboardIdentifier="CircleCityViewController" id="buu-Jy-yMQ" customClass="CircleCityViewController" customModule="TravelProject" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5fP-Ln-vTv">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="HZS-SD-anr">
+                                <rect key="frame" x="0.0" y="166" width="393" height="603"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="upI-Kz-vWB">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="W19-gi-iSp">
+                                        <rect key="frame" x="0.0" y="0.0" width="127.99999999999997" height="128"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="KBf-xg-FxU">
+                                            <rect key="frame" x="0.0" y="0.0" width="127.99999999999997" height="128"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </collectionViewCellContentView>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="tkY-6G-APz">
+                                <rect key="frame" x="24" y="119" width="345" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="FPA-dq-D0M"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="First"/>
+                                    <segment title="Second"/>
+                                </segments>
+                                <connections>
+                                    <action selector="segmentedControl:" destination="buu-Jy-yMQ" eventType="valueChanged" id="wm8-tm-sSU"/>
+                                </connections>
+                            </segmentedControl>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="zF2-mc-WNL"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="zF2-mc-WNL" firstAttribute="trailing" secondItem="tkY-6G-APz" secondAttribute="trailing" constant="24" id="2IS-Ap-svd"/>
+                            <constraint firstItem="zF2-mc-WNL" firstAttribute="trailing" secondItem="HZS-SD-anr" secondAttribute="trailing" id="79n-oq-5gw"/>
+                            <constraint firstItem="tkY-6G-APz" firstAttribute="leading" secondItem="zF2-mc-WNL" secondAttribute="leading" constant="24" id="Enm-Bg-sRq"/>
+                            <constraint firstItem="HZS-SD-anr" firstAttribute="leading" secondItem="zF2-mc-WNL" secondAttribute="leading" id="YBy-1B-pXJ"/>
+                            <constraint firstItem="HZS-SD-anr" firstAttribute="top" secondItem="tkY-6G-APz" secondAttribute="bottom" constant="16" id="aBG-LV-Gb2"/>
+                            <constraint firstItem="tkY-6G-APz" firstAttribute="top" secondItem="zF2-mc-WNL" secondAttribute="top" constant="16" id="gaH-RW-O6m"/>
+                            <constraint firstItem="zF2-mc-WNL" firstAttribute="bottom" secondItem="HZS-SD-anr" secondAttribute="bottom" id="ic2-V4-Qes"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="gDm-GW-M8I"/>
+                    <connections>
+                        <outlet property="collectionView" destination="HZS-SD-anr" id="0bV-RD-p3B"/>
+                        <outlet property="segmentedControl" destination="tkY-6G-APz" id="rPK-qo-wAm"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cyX-mO-lYG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2679" y="2015"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="Erw-Sz-l3O">
@@ -771,7 +836,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="Dsb-ZT-8sf" kind="relationship" relationship="rootViewController" id="fZb-74-rCw"/>
+                        <segue destination="buu-Jy-yMQ" kind="relationship" relationship="rootViewController" id="JET-rm-qIx"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gag-Ee-sba" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
