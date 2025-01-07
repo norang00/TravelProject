@@ -73,8 +73,22 @@ class TravelTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: DetailViewController.identifier) as! DetailViewController
-        vc.travelCity = travelList[indexPath.row]
-        navigationController?.pushViewController(vc, animated: true)
+        let item = travelList[indexPath.row]
+        
+        if item.ad {
+            let vc = storyboard.instantiateViewController(withIdentifier: AdViewController.identifier) as! AdViewController
+            vc.travelCity = item
+            
+            let nav = UINavigationController(rootViewController: vc)
+            nav.modalPresentationStyle = .fullScreen
+            present(nav, animated: true)
+            tableView.reloadRows(at: [indexPath], with: .automatic)
+        } else {
+            let vc = storyboard.instantiateViewController(withIdentifier: DetailViewController.identifier) as! DetailViewController
+            vc.travelCity = item
+            navigationController?.pushViewController(vc, animated: true)
+        }
+        
+        
     }
 }

@@ -411,6 +411,7 @@
                             <constraint firstItem="t9y-Ys-2Lz" firstAttribute="top" secondItem="STp-lO-Hvr" secondAttribute="top" constant="30" id="wUz-qP-nxN"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="UL5-77-s0w"/>
                     <connections>
                         <outlet property="backButton" destination="mJq-uJ-cc2" id="aYa-d1-UGd"/>
                         <outlet property="descriptionLabel" destination="RVO-UJ-KwR" id="CDH-dF-irk"/>
@@ -421,6 +422,47 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lxt-D8-IDM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3615" y="489"/>
+        </scene>
+        <!--Ad View Controller-->
+        <scene sceneID="5w8-54-bMW">
+            <objects>
+                <viewController storyboardIdentifier="AdViewController" id="j88-Uu-ofq" customClass="AdViewController" customModule="TravelProject" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Am0-F5-4PW">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UGG-tE-duo">
+                                <rect key="frame" x="0.0" y="59" width="393" height="759"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Wkx-Uh-ypF"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Wkx-Uh-ypF" firstAttribute="trailing" secondItem="UGG-tE-duo" secondAttribute="trailing" id="54d-4K-p09"/>
+                            <constraint firstItem="UGG-tE-duo" firstAttribute="bottom" secondItem="Wkx-Uh-ypF" secondAttribute="bottom" id="DfC-eD-qeT"/>
+                            <constraint firstItem="UGG-tE-duo" firstAttribute="centerX" secondItem="Am0-F5-4PW" secondAttribute="centerX" id="JBm-JG-6ga"/>
+                            <constraint firstItem="UGG-tE-duo" firstAttribute="leading" secondItem="Wkx-Uh-ypF" secondAttribute="leading" id="yzS-Ka-opv"/>
+                            <constraint firstItem="UGG-tE-duo" firstAttribute="top" secondItem="Wkx-Uh-ypF" secondAttribute="top" id="zLX-NX-XOq"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="9Cj-wB-eKn">
+                        <barButtonItem key="leftBarButtonItem" title="Item" id="s75-QO-mUX">
+                            <connections>
+                                <action selector="xButtonTapped:" destination="j88-Uu-ofq" id="Ggm-t6-vlz"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="contentLabel" destination="UGG-tE-duo" id="yYo-Uj-wB3"/>
+                        <outlet property="xBarButtonItem" destination="s75-QO-mUX" id="SD6-Ow-8ei"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="McN-8n-goj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4474" y="489"/>
         </scene>
         <!--Shopping Table View Controller-->
         <scene sceneID="yeJ-d9-jg4">

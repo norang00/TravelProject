@@ -13,6 +13,7 @@ extension UIViewController {
         let navigationAppearance = UINavigationBarAppearance()
         navigationAppearance.backgroundColor = .white
         navigationAppearance.shadowColor = .lightGray
+        navigationController?.navigationBar.tintColor = .black
         navigationController?.navigationBar.scrollEdgeAppearance = navigationAppearance
     }
 }
