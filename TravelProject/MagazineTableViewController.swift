@@ -14,6 +14,7 @@ class MagazineTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "SeSAC TRAVEL"
+        setNavigationAppearance()
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

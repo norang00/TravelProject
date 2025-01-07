@@ -5,4 +5,14 @@
 //  Created by Kyuhee hong on 1/7/25.
 //
 
-import Foundation
+import UIKit
+
+extension UIViewController {
+    
+    func setNavigationAppearance() {
+        let navigationAppearance = UINavigationBarAppearance()
+        navigationAppearance.backgroundColor = .white
+        navigationAppearance.shadowColor = .lightGray
+        navigationController?.navigationBar.scrollEdgeAppearance = navigationAppearance
+    }
+}

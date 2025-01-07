@@ -23,7 +23,7 @@ class DetailViewController: UIViewController {
         super.viewDidLoad()
         
         navigationItem.title = "관광지 화면"
-        navigationController?.navigationBar.backItem?.title = ""
+        navigationController?.navigationBar.topItem?.title = ""
         
         setView()
     }

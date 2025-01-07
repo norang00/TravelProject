@@ -15,6 +15,7 @@ class TravelTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "도시 상세 정보"
+        setNavigationAppearance()
     }
     
     @objc func likeButtonTapped(_ sender: UIButton) {

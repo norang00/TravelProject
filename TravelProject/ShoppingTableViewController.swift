@@ -23,6 +23,7 @@ class ShoppingTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "쇼핑"
+        setNavigationAppearance()
         setAddView()
     }
 

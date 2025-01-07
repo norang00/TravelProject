@@ -23,8 +23,9 @@ class CityTableViewController: UITableViewController {
         searchBar.delegate = self
 
         navigationItem.title = "인기 도시"
+        setNavigationAppearance()
+        
         tableView.separatorStyle = .none
-
         setSearchBarView()
         setSegmentedControlView()
         
