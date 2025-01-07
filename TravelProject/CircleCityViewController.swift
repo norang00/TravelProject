@@ -10,6 +10,10 @@ import UIKit
 class CircleCityViewController: UIViewController {
 
     var cityList = CityInfo().city
+    var filteredList: [City] = []
+    var isFiltering: Bool = false
+
+    var searchController: UISearchController!
     
     @IBOutlet var segmentedControl: UISegmentedControl!
     @IBOutlet var collectionView: UICollectionView!
@@ -17,7 +21,8 @@ class CircleCityViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        setSegmentedControlView()
+        setSearchBar()
+        setSegmentedControl()
         setCollectionView()
     }
     
@@ -28,9 +33,57 @@ class CircleCityViewController: UIViewController {
     }
 }
 
+// Search Bar 관련
+// https://devmjun.github.io/archive/SearchController
+// 참조한 튜토리얼 블로그
+extension CircleCityViewController: UISearchResultsUpdating {
+    
+    func checkFiltering() -> Bool {
+        return searchController.isActive && !searchBarIsEmpty()
+    }
+    
+    func setSearchBar() {
+        searchController = UISearchController(searchResultsController: nil)
+        
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "도시를 검색해보세요"
+        searchController.searchBar.setValue("취소", forKey: "cancelButtonText")
+        
+        navigationItem.searchController = searchController
+        definesPresentationContext = true
+    }
+
+    func updateSearchResults(for searchController: UISearchController) {
+        filterContentForSearchText(searchController.searchBar.text!)
+    }
+    
+    func searchBarIsEmpty() -> Bool {
+        return searchController.searchBar.text?.isEmpty ?? true
+    }
+    
+    func filterContentForSearchText(_ searchText: String, scope: String = "All") {
+        let trimmedText = searchText.trimmingCharacters(in: [" "])
+        if trimmedText.isEmpty {
+            isFiltering = false
+            filteredList = []
+        } else {
+            isFiltering = true
+            filteredList = cityList.filter {
+                $0.city_name.localizedCaseInsensitiveContains(trimmedText) ||
+                $0.city_english_name.localizedCaseInsensitiveContains(trimmedText) ||
+                $0.city_explain.localizedCaseInsensitiveContains(trimmedText)
+            }
+        }
+        collectionView.reloadData()
+    }
+    
+}
+
 // Segmented Control 관련
 extension CircleCityViewController {
-    func setSegmentedControlView() {
+    
+    func setSegmentedControl() {
         print(#function)
         segmentedControl.removeAllSegments()
 
@@ -59,6 +112,8 @@ extension CircleCityViewController {
         default:
             print("segmentedControl default")
         }
+        
+        filterContentForSearchText(searchController.searchBar.text!)
         collectionView.reloadData()
     }
 }
@@ -97,21 +152,17 @@ extension CircleCityViewController: UICollectionViewDelegate, UICollectionViewDa
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print(#function)
-
-        return cityList.count
+        return isFiltering ? filteredList.count : cityList.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        print(#function, indexPath)
-
-        let item = cityList[indexPath.row]
+        let item = isFiltering ? filteredList[indexPath.row] : cityList[indexPath.row]
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CircleCityCollectionViewCell.identifier, for: indexPath) as! CircleCityCollectionViewCell
-        cell.configureData(item)
+        
+        let searchText = searchController.searchBar.text?.trimmingCharacters(in: [" "]) ?? ""
+        cell.configureData(item, searchText)
+        
         return cell
     }
-    
-    
-    
     
 }
