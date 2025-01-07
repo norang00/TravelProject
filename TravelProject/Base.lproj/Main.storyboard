@@ -77,7 +77,6 @@
                                     <outlet property="magazineImageView" destination="hFh-6n-o3d" id="y6T-5q-fBh"/>
                                     <outlet property="magazineSubtitleLabel" destination="4it-yQ-bxi" id="wuu-1K-r3n"/>
                                     <outlet property="magazineTitleLabel" destination="5gW-DS-9Oe" id="OH8-05-kKf"/>
-                                    <segue destination="uK7-Bh-Ens" kind="show" identifier="webViewSegue" id="pzG-Zs-n0J"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -95,13 +94,13 @@
         <!--Web View Controller-->
         <scene sceneID="cfF-6L-5en">
             <objects>
-                <viewController id="uK7-Bh-Ens" customClass="WebViewController" customModule="TravelProject" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="WebViewController" id="uK7-Bh-Ens" customClass="WebViewController" customModule="TravelProject" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="afM-zP-Uwe">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Htw-CZ-D8l">
-                                <rect key="frame" x="0.0" y="103" width="393" height="666"/>
+                                <rect key="frame" x="0.0" y="59" width="393" height="759"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <wkWebViewConfiguration key="configuration">
                                     <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>

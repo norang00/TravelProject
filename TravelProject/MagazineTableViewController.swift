@@ -49,4 +49,21 @@ class MagazineTableViewController: UITableViewController {
         return cell
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print(#function)
+        
+        let item = magazineList[indexPath.row]
+        if let vc = storyboard?.instantiateViewController(withIdentifier: WebViewController.identifier) as? WebViewController {
+            vc.urlString = item.link
+            vc.modalPresentationStyle = .popover
+            if let popover = vc.popoverPresentationController {
+                let sheet = popover.adaptiveSheetPresentationController
+                sheet.detents = [.medium(), .large()]
+                sheet.prefersGrabberVisible = true
+            }
+            present(vc, animated: true, completion: nil)
+        }
+        tableView.reloadRows(at: [IndexPath(row: indexPath.row, section: 0)], with: .automatic)
+    }
+    
 }
