@@ -50,8 +50,6 @@ class MagazineTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(#function)
-        
         let item = magazineList[indexPath.row]
         if let vc = storyboard?.instantiateViewController(withIdentifier: WebViewController.identifier) as? WebViewController {
             vc.urlString = item.link
