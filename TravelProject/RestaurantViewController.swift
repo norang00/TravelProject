@@ -86,7 +86,6 @@ extension RestaurantViewController: MKMapViewDelegate {
         let allAnnotations = self.mapView.annotations
         self.mapView.removeAnnotations(allAnnotations)
         
-        print(#function)
         let center = calculateCenter(restaurantList)
         mapView.region = MKCoordinateRegion(center: center, latitudinalMeters: 250, longitudinalMeters: 250)
         mapView.addAnnotations(getAnnotations(restaurantList))
@@ -101,9 +100,8 @@ extension RestaurantViewController: MKMapViewDelegate {
         let sumLongitudes = longitudes.reduce(0, +)
         let averageLatitude = sumLatitudes/Double(restaurantList.count)
         let averageLongitude = sumLongitudes/Double(restaurantList.count)
-     
         result = CLLocationCoordinate2D(latitude: averageLatitude, longitude: averageLongitude)
-        print(result)
+
         return result
     }
     
@@ -119,7 +117,13 @@ extension RestaurantViewController: MKMapViewDelegate {
 
             annotationList.append(annotation)
         }
+        
         return annotationList
+    }
+    
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        let coordinate: CLLocationCoordinate2D = view.annotation!.coordinate
+        mapView.region = MKCoordinateRegion(center: coordinate, latitudinalMeters: 250, longitudinalMeters: 250)
     }
     
 }
