@@ -87,9 +87,24 @@ extension RestaurantViewController: MKMapViewDelegate {
         self.mapView.removeAnnotations(allAnnotations)
         
         print(#function)
-        let center = CLLocationCoordinate2D(latitude: 37.65370, longitude: 127.04740)
-        mapView.region = MKCoordinateRegion(center: center, latitudinalMeters: 500, longitudinalMeters: 500)
+        let center = calculateCenter(restaurantList)
+        mapView.region = MKCoordinateRegion(center: center, latitudinalMeters: 250, longitudinalMeters: 250)
         mapView.addAnnotations(getAnnotations(restaurantList))
+    }
+    
+    func calculateCenter(_ restaurantList: [Restaurant]) -> CLLocationCoordinate2D {
+        var result: CLLocationCoordinate2D
+        
+        let latitudes: [Double] = restaurantList.map { $0.latitude }
+        let longitudes: [Double] = restaurantList.map { $0.longitude }
+        let sumLatitudes = latitudes.reduce(0, +)
+        let sumLongitudes = longitudes.reduce(0, +)
+        let averageLatitude = sumLatitudes/Double(restaurantList.count)
+        let averageLongitude = sumLongitudes/Double(restaurantList.count)
+     
+        result = CLLocationCoordinate2D(latitude: averageLatitude, longitude: averageLongitude)
+        print(result)
+        return result
     }
     
     func getAnnotations(_ restaurantList: [Restaurant]) -> [MKPointAnnotation] {
