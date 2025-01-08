@@ -882,11 +882,11 @@
             </objects>
             <point key="canvasLocation" x="2679" y="2802"/>
         </scene>
-        <!--식당-->
+        <!--창동 맛집-->
         <scene sceneID="aNJ-g5-DWa">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="bUf-4W-SPO" customClass="rest" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="식당" image="fork.knife" catalog="system" id="o2c-aG-0hC"/>
+                    <tabBarItem key="tabBarItem" title="창동 맛집" image="fork.knife" catalog="system" id="o2c-aG-0hC"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="1Md-tP-oi0">
                         <rect key="frame" x="0.0" y="59" width="393" height="44"/>
