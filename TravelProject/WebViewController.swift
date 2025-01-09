@@ -10,10 +10,12 @@ import WebKit
 
 // 블로그 따라해보기! 김종권님 늘 감사합니다...
 // https://ios-development.tistory.com/470
-class WebViewController: UIViewController {
+class WebViewController: UIViewController, ReusableViewProtocol {
     
-    static var identifier = "WebViewController"
-
+    static var identifier: String {
+        return String(describing: self)
+    }
+    
     @IBOutlet var webView: WKWebView!
     var urlString: String = "https://www.naver.com"
     

@@ -7,9 +7,11 @@
 
 import UIKit
 
-class AdViewController: UIViewController {
+class AdViewController: UIViewController, ReusableViewProtocol {
     
-    static var identifier = "AdViewController"
+    static var identifier: String {
+        return String(describing: self)
+    }
     
     @IBOutlet var xBarButtonItem: UIBarButtonItem!
     @IBOutlet var contentLabel: UILabel!

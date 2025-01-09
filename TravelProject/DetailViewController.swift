@@ -8,9 +8,11 @@
 import UIKit
 import Kingfisher
 
-class DetailViewController: UIViewController {
+class DetailViewController: UIViewController, ReusableViewProtocol {
     
-    static var identifier = "DetailViewController"
+    static var identifier: String {
+        return String(describing: self)
+    }
     
     @IBOutlet var imageView: UIImageView!
     @IBOutlet var titleLabel: UILabel!

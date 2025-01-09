@@ -8,9 +8,12 @@
 import UIKit
 import Kingfisher
 
-class CircleCityCollectionViewCell: UICollectionViewCell {
-    
-    static var identifier = "CircleCityCollectionViewCell"
+class CircleCityCollectionViewCell: UICollectionViewCell, ReusableViewProtocol {
+
+    static var identifier: String {
+        return String(describing: self)
+    }
+//    static var identifier = "CircleCityCollectionViewCell"
 
     @IBOutlet var cityImageView: UIImageView!
     @IBOutlet var cityNameLabel: UILabel!
